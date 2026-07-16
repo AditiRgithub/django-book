@@ -1,0 +1,15 @@
+{% extends "users/basic.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Profile</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div>
+        <button class="btn btn-primary mt-2" type="submit">Update Profile</button>
+      </div>
+    </form>
+    <p>Want to change your password? <a href="{% url 'password_reset' %}">Reset it here</a>.</p>
+  </div>
+{% endblock %}

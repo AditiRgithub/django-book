@@ -1,0 +1,16 @@
+{% extends "users/basic.html" %}
+
+{% block content %}
+<h1>Movies</h1>
+
+<ul class="list-unstyled">
+  {% for movie in movies %}
+    <li class="mb-4">
+      <img src="{{ movie.image.url }}" alt="image" class="d-block" style="width: 200px; margin-bottom: 10px;">
+      <strong>{{ movie.name }}</strong> - {{ movie.rating }}
+      <p>Cast: {{ movie.cast }}</p>
+      <a href="{% url 'theater_list' movie.id %}">View Theaters</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
