@@ -13,12 +13,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-@v47lpx#cggs@^2evz*)9ziz_%9l!2-q*m6406!n#*^bm&i33h"
@@ -26,7 +24,20 @@ SECRET_KEY = "django-insecure-@v47lpx#cggs@^2evz*)9ziz_%9l!2-q*m6406!n#*^bm&i33h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".vercel.app"]
+ALLOWED_HOSTS = [
+    ".vercel.app",
+    "django-book-two.vercel.app",
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://django-book-two.vercel.app",
+]
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 # Application definition
@@ -52,18 +63,18 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-AUTH_USER_MODEL="auth.User" 
-EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+AUTH_USER_MODEL = "auth.User"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 ROOT_URLCONF = "bookmyseat.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -78,17 +89,16 @@ TEMPLATES = [
 WSGI_APPLICATION = "bookmyseat.wsgi.application"
 
 # Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
 DATABASES = {
-    "default": dj_database_url.parse(
-        "postgresql://django_bookmyshow_ow99_user:JVlAYRYOOFePOn5f7vS0I7fdsw0cjHky@dpg-d9c132rtqb8s73a57jdg-a.virginia-postgres.render.com/django_bookmyshow_ow99"
-    )
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
+DATABASES['default']=dj_database_url.parse('postgresql://django_bookmyseat_a2fm_user:X5xjULEJLltuxYudIj7MkpKEGe56KT4C@dpg-d9dpbuf41pts73dkq7rg-a.virginia-postgres.render.com/django_bookmyseat_a2fm')
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -104,10 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/6.0/topics/i18n/
-
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -116,11 +123,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
-
+# Static files
 STATIC_URL = "static/"
 
-# Login redirect settings
-LOGIN_URL = 'login'
+# Login settings
+LOGIN_URL = "login"
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
