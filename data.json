@@ -1,0 +1,1037 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-07-15T02:45:31.199Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Avengers",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-07-15T02:48:07.022Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "rdj - Avengers at 2026-07-31 02:48:00+00:00",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-07-15T02:51:52.860Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "a1 in rdj",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-07-15T02:52:23.987Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "a2 in rdj",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-07-15T19:38:48.991Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Zindagi Na Milegi Dobara",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-07-15T19:44:53.870Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Yeh Jawaani Hai Deewani",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-07-15T19:51:29.265Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "Dil Dhadakne Do",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-07-15T20:00:05.726Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "Main Hoon Na",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-07-15T20:13:06.235Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "INOX R City - Zindagi Na Milegi Dobara at 2026-07-16 20:12:56+00:00",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-07-15T20:14:39.498Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "a1 in INOX R City",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-07-15T20:15:04.226Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "a2 in INOX R City",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-07-15T20:15:26.659Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "5",
+    "object_repr": "b1 in INOX R City",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-07-15T21:31:51.060Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "3",
+    "object_repr": "Inox - Dil Dhadakne Do at 2026-07-06 21:31:50+00:00",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-07-15T21:32:20.909Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "6",
+    "object_repr": "a1 in Inox",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-07-15T21:32:48.768Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "7",
+    "object_repr": "a2 in Inox",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-07-15T21:33:01.559Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "8",
+    "object_repr": "b1 in Inox",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-07-15T21:33:14.095Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "9",
+    "object_repr": "b2 in Inox",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-07-15T22:23:21.860Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "10",
+    "object_repr": "b2 in Inox",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-07-15T22:23:28.860Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "8",
+    "object_repr": "Booking by Aditi for b2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-07-15T22:25:31.885Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "11",
+    "object_repr": "b1 in INOX R City",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-07-15T22:27:35.586Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "9",
+    "object_repr": "Booking by Aditi for b1",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 3,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 3,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 3,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 3,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 2,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 2,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 2,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 2,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add booking",
+    "content_type": 7,
+    "codename": "add_booking"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change booking",
+    "content_type": 7,
+    "codename": "change_booking"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete booking",
+    "content_type": 7,
+    "codename": "delete_booking"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view booking",
+    "content_type": 7,
+    "codename": "view_booking"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add seat",
+    "content_type": 9,
+    "codename": "add_seat"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change seat",
+    "content_type": 9,
+    "codename": "change_seat"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete seat",
+    "content_type": 9,
+    "codename": "delete_seat"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view seat",
+    "content_type": 9,
+    "codename": "view_seat"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add movie",
+    "content_type": 8,
+    "codename": "add_movie"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change movie",
+    "content_type": 8,
+    "codename": "change_movie"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete movie",
+    "content_type": 8,
+    "codename": "delete_movie"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view movie",
+    "content_type": 8,
+    "codename": "view_movie"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add theater",
+    "content_type": 10,
+    "codename": "add_theater"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change theater",
+    "content_type": 10,
+    "codename": "change_theater"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete theater",
+    "content_type": 10,
+    "codename": "delete_theater"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view theater",
+    "content_type": 10,
+    "codename": "view_theater"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$CXg0T0KHKcxi1kZ1UhcR2N$IiWe8ZD2ZyFqbRcnAuYwqwMqizmJL+1eMWf6fugx+GI=",
+    "last_login": "2026-07-16T18:31:42.798Z",
+    "is_superuser": true,
+    "username": "Aditi",
+    "first_name": "",
+    "last_name": "",
+    "email": "aditirao130804@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-07-15T00:02:33.929Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "movies",
+    "model": "booking"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "movies",
+    "model": "movie"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "movies",
+    "model": "seat"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "movies",
+    "model": "theater"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "4ptdglb6kt9n4l5ugjdncqqbr0106w0s",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlm7_sWhpOcM1npt4wBypDipEHeHSCmgfTPzXiLQttaw9byEKYmzQHH63SLxI7cdpDu12yx5busyRbkr8qBdXueUn5fD_Tuo1Ou3NuB1Mkg6FUxlIM8WB8gaFHFWUKJ23iNajZEVGLIRrS2jc8SoYWTx_gDUXDdM:1wk5HW:ea5fezIKbRz02hYuA0KdNR2pTj9YGXA_uKPe8sa5N4U",
+    "expire_date": "2026-07-29T19:28:34.162Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "a3vto9phejpfrgm8kwoi713uhmpsmhvf",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlm7_sWhpOcM1npt4wBypDipEHeHSCmgfTPzXiLQttaw9byEKYmzQHH63SLxI7cdpDu12yx5busyRbkr8qBdXueUn5fD_Tuo1Ou3NuB1Mkg6FUxlIM8WB8gaFHFWUKJ23iNajZEVGLIRrS2jc8SoYWTx_gDUXDdM:1wkQs2:CGToGyzEHDscH6ctbneeIBQZGKeyJAtfPgUwpvt6VmE",
+    "expire_date": "2026-07-30T18:31:42.806Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "n3uivp88x1zausqsgucd5jpck7p7u3a3",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlm7_sWhpOcM1npt4wBypDipEHeHSCmgfTPzXiLQttaw9byEKYmzQHH63SLxI7cdpDu12yx5busyRbkr8qBdXueUn5fD_Tuo1Ou3NuB1Mkg6FUxlIM8WB8gaFHFWUKJ23iNajZEVGLIRrS2jc8SoYWTx_gDUXDdM:1wjpn6:yN3fhKQNi-YS8QJ1E4B0-yNVz39T7S2QzNXfdfxtQE0",
+    "expire_date": "2026-07-29T02:56:08.383Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 1,
+  "fields": {
+    "name": "Avengers",
+    "image": "movies/medium-ddsp354-avengers-infinity-war-original-imafvqz7bzrfzmsj1.jpeg",
+    "rating": "8.9",
+    "cast": "Robert Downey Jr., Chris Evan, Chris Hemsworth, Jeremy Renner, Scarlett Johansson, Tom Hiddleston, Samuel L. Jackson, Mark Ruffalo",
+    "description": "Earth's mightiest heroes—including Iron Man, Captain America, the Hulk, Thor, Black Widow, and Hawkeye must unite under S.H.I.E.L.D. director Nick Fury. They are tasked with stopping Thor's adoptive brother, Loki, who uses the cosmic power of the Tesseract to launch an alien invasion on New York City."
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 2,
+  "fields": {
+    "name": "Zindagi Na Milegi Dobara",
+    "image": "movies/MV5BOGIzYzg5NzItNDRkYS00NmIzLTk3NzQtZWYwY2VlZDhiYWQ4XkEyXkFqcGc._V1_1.jpg",
+    "rating": "8.2",
+    "cast": "Hrithik Roshan, Farhan Akhtar, Abhay Deol, Katrina Kaif, Kalki Koechlin, Naseeruddin Shah",
+    "description": "Three friends decide to turn their fantasy vacation into reality after one of their friends gets engaged."
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 3,
+  "fields": {
+    "name": "Yeh Jawaani Hai Deewani",
+    "image": "movies/MV5BYjRhZjlmZjYtOGY2MS00YjExLWI2NjYtM2EyZGRhMWJkNzFlXkEyXkFqcGc._V1_1.jpg",
+    "rating": "7.3",
+    "cast": "Ranbir Kapoor, Deepika Padukone, Aditya Roy Kapoor, Kalki Koechlin",
+    "description": "Kabir and Naina bond during a trekking trip. Before Naina can express herself, Kabir leaves India to pursue his career. They meet again years later, but he still cherishes his dreams more than bonds."
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 4,
+  "fields": {
+    "name": "Dil Dhadakne Do",
+    "image": "movies/MV5BZmExOTlmNDAtYWMzZC00NzEyLWFhYmYtNTgwMjZiMDRhMDQyXkEyXkFqcGc._V1_FMjpg_UX1000_1.jpg",
+    "rating": "7.1",
+    "cast": "Ranveer Singh, Priyanka Chopra, Farhan Akhtar, Anushka Sharma, Anil Kapoor, Shefali Shah, Rahul Bose, Vikrant Massey",
+    "description": "The Mehra family must contemplate over their way of living and their love lives while on a cruise celebrating their 30th wedding anniversary."
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 5,
+  "fields": {
+    "name": "Main Hoon Na",
+    "image": "movies/MV5BMDcwZDJhOGQtNWI5NS00MmI3LWFkYjMtNTY3OGUxMjgwMjZiXkEyXkFqcGc._V1_FMjpg_UX1000_1.jpg",
+    "rating": "7.1",
+    "cast": "Shah Rukh Khan, Sushmita Sen, Zayed Khan, Boman Irani, Amrita Rao, Kirron Kher, Suniel Shetty, Naseeruddin Shah,",
+    "description": "An army major goes undercover as a college student. His mission is both professional and personal: to protect his general's daughter from a radical militant, and to find his estranged half-brother."
+  }
+},
+{
+  "model": "movies.theater",
+  "pk": 1,
+  "fields": {
+    "name": "rdj",
+    "movie": 1,
+    "time": "2026-07-31T02:48:00Z"
+  }
+},
+{
+  "model": "movies.theater",
+  "pk": 2,
+  "fields": {
+    "name": "INOX R City",
+    "movie": 2,
+    "time": "2026-07-16T20:12:56Z"
+  }
+},
+{
+  "model": "movies.theater",
+  "pk": 3,
+  "fields": {
+    "name": "Inox",
+    "movie": 4,
+    "time": "2026-07-06T21:31:50Z"
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 1,
+  "fields": {
+    "theater": 1,
+    "seat_number": "a1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 2,
+  "fields": {
+    "theater": 1,
+    "seat_number": "a2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 3,
+  "fields": {
+    "theater": 2,
+    "seat_number": "a1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 4,
+  "fields": {
+    "theater": 2,
+    "seat_number": "a2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 5,
+  "fields": {
+    "theater": 2,
+    "seat_number": "b1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 6,
+  "fields": {
+    "theater": 3,
+    "seat_number": "a1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 7,
+  "fields": {
+    "theater": 3,
+    "seat_number": "a2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 8,
+  "fields": {
+    "theater": 3,
+    "seat_number": "b1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 9,
+  "fields": {
+    "theater": 3,
+    "seat_number": "b2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 10,
+  "fields": {
+    "theater": 3,
+    "seat_number": "b2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 11,
+  "fields": {
+    "theater": 2,
+    "seat_number": "b1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "seat": 2,
+    "movie": 1,
+    "theater": 1,
+    "booked_at": "2026-07-15T03:31:50.715Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "seat": 1,
+    "movie": 1,
+    "theater": 1,
+    "booked_at": "2026-07-15T03:47:41.929Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "seat": 3,
+    "movie": 2,
+    "theater": 2,
+    "booked_at": "2026-07-15T20:22:16.339Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 4,
+  "fields": {
+    "user": 1,
+    "seat": 4,
+    "movie": 2,
+    "theater": 2,
+    "booked_at": "2026-07-15T20:29:14.200Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 5,
+  "fields": {
+    "user": 1,
+    "seat": 7,
+    "movie": 4,
+    "theater": 3,
+    "booked_at": "2026-07-15T21:35:27.985Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 6,
+  "fields": {
+    "user": 1,
+    "seat": 6,
+    "movie": 4,
+    "theater": 3,
+    "booked_at": "2026-07-15T21:35:59.393Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 7,
+  "fields": {
+    "user": 1,
+    "seat": 8,
+    "movie": 4,
+    "theater": 3,
+    "booked_at": "2026-07-15T21:36:19.153Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 8,
+  "fields": {
+    "user": 1,
+    "seat": 10,
+    "movie": 4,
+    "theater": 3,
+    "booked_at": "2026-07-15T22:23:28.853Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 9,
+  "fields": {
+    "user": 1,
+    "seat": 11,
+    "movie": 2,
+    "theater": 2,
+    "booked_at": "2026-07-15T22:27:35.581Z"
+  }
+}
+]

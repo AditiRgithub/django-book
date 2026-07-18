@@ -88,6 +88,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "bookmyseat.wsgi.application"
 
+# Database
+# https://docs.djangoproject.com/en/stable/ref/settings/#databases
+
 DATABASES = {
     "default": dj_database_url.parse(
         "postgresql://django_bookmyseat_a2fm_user:X5xjULEJLltuxYudIj7MkpKEGe56KT4C@dpg-d9dpbuf41pts73dkq7rg-a.virginia-postgres.render.com/django_bookmyseat_a2fm"

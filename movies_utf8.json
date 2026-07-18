@@ -1,0 +1,282 @@
+[
+{
+  "model": "movies.movie",
+  "pk": 1,
+  "fields": {
+    "name": "Avengers",
+    "image": "movies/medium-ddsp354-avengers-infinity-war-original-imafvqz7bzrfzmsj1.jpeg",
+    "rating": "8.9",
+    "cast": "Robert Downey Jr., Chris Evan, Chris Hemsworth, Jeremy Renner, Scarlett Johansson, Tom Hiddleston, Samuel L. Jackson, Mark Ruffalo",
+    "description": "Earth's mightiest heroes—including Iron Man, Captain America, the Hulk, Thor, Black Widow, and Hawkeye must unite under S.H.I.E.L.D. director Nick Fury. They are tasked with stopping Thor's adoptive brother, Loki, who uses the cosmic power of the Tesseract to launch an alien invasion on New York City."
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 2,
+  "fields": {
+    "name": "Zindagi Na Milegi Dobara",
+    "image": "movies/MV5BOGIzYzg5NzItNDRkYS00NmIzLTk3NzQtZWYwY2VlZDhiYWQ4XkEyXkFqcGc._V1_1.jpg",
+    "rating": "8.2",
+    "cast": "Hrithik Roshan, Farhan Akhtar, Abhay Deol, Katrina Kaif, Kalki Koechlin, Naseeruddin Shah",
+    "description": "Three friends decide to turn their fantasy vacation into reality after one of their friends gets engaged."
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 3,
+  "fields": {
+    "name": "Yeh Jawaani Hai Deewani",
+    "image": "movies/MV5BYjRhZjlmZjYtOGY2MS00YjExLWI2NjYtM2EyZGRhMWJkNzFlXkEyXkFqcGc._V1_1.jpg",
+    "rating": "7.3",
+    "cast": "Ranbir Kapoor, Deepika Padukone, Aditya Roy Kapoor, Kalki Koechlin",
+    "description": "Kabir and Naina bond during a trekking trip. Before Naina can express herself, Kabir leaves India to pursue his career. They meet again years later, but he still cherishes his dreams more than bonds."
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 4,
+  "fields": {
+    "name": "Dil Dhadakne Do",
+    "image": "movies/MV5BZmExOTlmNDAtYWMzZC00NzEyLWFhYmYtNTgwMjZiMDRhMDQyXkEyXkFqcGc._V1_FMjpg_UX1000_1.jpg",
+    "rating": "7.1",
+    "cast": "Ranveer Singh, Priyanka Chopra, Farhan Akhtar, Anushka Sharma, Anil Kapoor, Shefali Shah, Rahul Bose, Vikrant Massey",
+    "description": "The Mehra family must contemplate over their way of living and their love lives while on a cruise celebrating their 30th wedding anniversary."
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 5,
+  "fields": {
+    "name": "Main Hoon Na",
+    "image": "movies/MV5BMDcwZDJhOGQtNWI5NS00MmI3LWFkYjMtNTY3OGUxMjgwMjZiXkEyXkFqcGc._V1_FMjpg_UX1000_1.jpg",
+    "rating": "7.1",
+    "cast": "Shah Rukh Khan, Sushmita Sen, Zayed Khan, Boman Irani, Amrita Rao, Kirron Kher, Suniel Shetty, Naseeruddin Shah,",
+    "description": "An army major goes undercover as a college student. His mission is both professional and personal: to protect his general's daughter from a radical militant, and to find his estranged half-brother."
+  }
+},
+{
+  "model": "movies.theater",
+  "pk": 1,
+  "fields": {
+    "name": "rdj",
+    "movie": 1,
+    "time": "2026-07-31T02:48:00Z"
+  }
+},
+{
+  "model": "movies.theater",
+  "pk": 2,
+  "fields": {
+    "name": "INOX R City",
+    "movie": 2,
+    "time": "2026-07-16T20:12:56Z"
+  }
+},
+{
+  "model": "movies.theater",
+  "pk": 3,
+  "fields": {
+    "name": "Inox",
+    "movie": 4,
+    "time": "2026-07-06T21:31:50Z"
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 1,
+  "fields": {
+    "theater": 1,
+    "seat_number": "a1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 2,
+  "fields": {
+    "theater": 1,
+    "seat_number": "a2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 3,
+  "fields": {
+    "theater": 2,
+    "seat_number": "a1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 4,
+  "fields": {
+    "theater": 2,
+    "seat_number": "a2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 5,
+  "fields": {
+    "theater": 2,
+    "seat_number": "b1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 6,
+  "fields": {
+    "theater": 3,
+    "seat_number": "a1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 7,
+  "fields": {
+    "theater": 3,
+    "seat_number": "a2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 8,
+  "fields": {
+    "theater": 3,
+    "seat_number": "b1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 9,
+  "fields": {
+    "theater": 3,
+    "seat_number": "b2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 10,
+  "fields": {
+    "theater": 3,
+    "seat_number": "b2",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.seat",
+  "pk": 11,
+  "fields": {
+    "theater": 2,
+    "seat_number": "b1",
+    "is_booked": true
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "seat": 2,
+    "movie": 1,
+    "theater": 1,
+    "booked_at": "2026-07-15T03:31:50.715Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "seat": 1,
+    "movie": 1,
+    "theater": 1,
+    "booked_at": "2026-07-15T03:47:41.929Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "seat": 3,
+    "movie": 2,
+    "theater": 2,
+    "booked_at": "2026-07-15T20:22:16.339Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 4,
+  "fields": {
+    "user": 1,
+    "seat": 4,
+    "movie": 2,
+    "theater": 2,
+    "booked_at": "2026-07-15T20:29:14.200Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 5,
+  "fields": {
+    "user": 1,
+    "seat": 7,
+    "movie": 4,
+    "theater": 3,
+    "booked_at": "2026-07-15T21:35:27.985Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 6,
+  "fields": {
+    "user": 1,
+    "seat": 6,
+    "movie": 4,
+    "theater": 3,
+    "booked_at": "2026-07-15T21:35:59.393Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 7,
+  "fields": {
+    "user": 1,
+    "seat": 8,
+    "movie": 4,
+    "theater": 3,
+    "booked_at": "2026-07-15T21:36:19.153Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 8,
+  "fields": {
+    "user": 1,
+    "seat": 10,
+    "movie": 4,
+    "theater": 3,
+    "booked_at": "2026-07-15T22:23:28.853Z"
+  }
+},
+{
+  "model": "movies.booking",
+  "pk": 9,
+  "fields": {
+    "user": 1,
+    "seat": 11,
+    "movie": 2,
+    "theater": 2,
+    "booked_at": "2026-07-15T22:27:35.581Z"
+  }
+}
+]

@@ -1,0 +1,20 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$CXg0T0KHKcxi1kZ1UhcR2N$IiWe8ZD2ZyFqbRcnAuYwqwMqizmJL+1eMWf6fugx+GI=",
+    "last_login": "2026-07-16T18:31:42.798Z",
+    "is_superuser": true,
+    "username": "Aditi",
+    "first_name": "",
+    "last_name": "",
+    "email": "aditirao130804@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-07-15T00:02:33.929Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
