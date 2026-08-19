@@ -1,7 +1,7 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
-from django.conf.urls.static import static
+from django.views.static import serve
 
 from movies import views as movies_views
 
@@ -12,17 +12,17 @@ urlpatterns = [
     path('', include('users.urls')),
     path('movies/', include('movies.urls')),
 
-    # QR verification URL used by Task 2 ticket generation
+    # QR verification URL used by ticket generation
     path(
         'tickets/verify/<uuid:token>/',
         movies_views.verify_ticket,
         name='verify_ticket'
     ),
+
+    # Serve movie poster/media files on Vercel
+    re_path(
+        r'^media/(?P<path>.*)$',
+        serve,
+        {'document_root': settings.MEDIA_ROOT}
+    ),
 ]
-
-
-if settings.DEBUG:
-    urlpatterns += static(
-        settings.MEDIA_URL,
-        document_root=settings.MEDIA_ROOT
-    )
