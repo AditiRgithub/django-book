@@ -1,0 +1,65 @@
+{% extends "users/basic.html" %} {% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white text-center">
+          <h4 class="mb-0"><i class="fas fa-chair me-2"></i> Seats Reserved</h4>
+        </div>
+        <div class="card-body">
+          <p class="mb-1"><strong>Movie:</strong> {{ theater.movie.name }}</p>
+          <p class="mb-1"><strong>Theater:</strong> {{ theater.name }}</p>
+          <p class="mb-1"><strong>Show Date/Time:</strong> {{ theater.time }}</p>
+          <p class="mb-3">
+            <strong>Seats:</strong>
+            {% for r in reservations %}{{ r.seat.seat_number }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          </p>
+
+          <div class="alert alert-warning text-center" role="alert">
+            Your seats are held for <strong id="countdown">--:--</strong>.
+            Complete payment before the timer runs out or your reservation will expire.
+          </div>
+
+          <div class="d-flex justify-content-between flex-wrap">
+            <a href="{% url 'book_seats' theater.id %}" class="btn btn-outline-secondary mb-2">
+              <i class="fas fa-edit me-1"></i> Modify Seats
+            </a>
+            <a href="{% url 'payment_placeholder' theater.id %}" class="btn btn-primary mb-2">
+              Proceed to Payment <i class="fas fa-chevron-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // expires_at is rendered server-side as an ISO timestamp; the countdown is
+  // purely a display convenience. The 2-minute expiry itself is enforced by
+  // the server (expires_at column + lazy cleanup), not by this JS timer —
+  // so even if the user closes the tab, the reservation still expires correctly.
+  var expiresAt = new Date("{{ expires_at|date:'c' }}").getTime();
+
+  function updateCountdown() {
+    var now = new Date().getTime();
+    var remainingMs = expiresAt - now;
+    var countdownEl = document.getElementById('countdown');
+
+    if (remainingMs <= 0) {
+      countdownEl.textContent = "00:00";
+      window.location.href = "{% url 'book_seats' theater.id %}";
+      return;
+    }
+
+    var totalSeconds = Math.floor(remainingMs / 1000);
+    var minutes = Math.floor(totalSeconds / 60);
+    var seconds = totalSeconds % 60;
+    countdownEl.textContent =
+      (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+{% endblock %}

@@ -1,50 +1,190 @@
 {% extends "users/basic.html" %}
 
 {% block content %}
-<div class="container py-5">
-    <h1 class="text-center mb-5">Movies</h1>
+
+{% if messages %}
+<div class="mt-2">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Compact premium discovery header. Not the homepage carousel - a
+     lightweight page header for the movie discovery page only.
+     Uses a full-viewport-width CSS breakout so it visually spans edge to
+     edge even though basic.html wraps content in a fixed-width container -
+     no changes to basic.html required. -->
+<div class="discovery-header full-bleed">
+    <div class="discovery-header-inner">
+        <h1 class="discovery-title mb-1">Discover Movies</h1>
+        <p class="discovery-subtitle mb-0">Search, filter and find the show that is right for you.</p>
+    </div>
+</div>
+
+<div class="py-4">
 
     <div class="row justify-content-center mb-5">
-        <div class="col-md-8">
-            <form method="GET" action="{% url 'movie_list' %}" class="search-bar">
-                <div class="input-group">
+        <div class="col-md-10">
+            <form method="GET" action="{% url 'movie_list' %}" class="filter-panel">
+                <div class="input-group search-bar-group mb-4">
                     <input
-                        class="form-control form-control-lg"
+                        class="form-control form-control-lg search-input"
                         name="search"
-                        placeholder="Search for Movies, Events, Plays, Sports and Activities"
+                        placeholder="Search movies by title..."
                         type="text"
                         value="{{ request.GET.search|default_if_none:'' }}"
                         aria-label="Search for movies"
                     />
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">
+                        <button class="btn btn-search" type="submit">
                             <i class="fas fa-search"></i> Search
                         </button>
                     </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="row">
+                    <div class="col-6 col-md-4 mb-3">
+                        <label class="filter-label"><i class="fas fa-theater-masks"></i> Genre</label>
+                        <input type="text" name="genre" class="form-control" placeholder="e.g. Action"
+                               value="{{ request.GET.genre|default_if_none:'' }}">
+                    </div>
+                    <div class="col-6 col-md-4 mb-3">
+                        <label class="filter-label"><i class="fas fa-language"></i> Language</label>
+                        <input type="text" name="language" class="form-control" placeholder="e.g. Hindi"
+                               value="{{ request.GET.language|default_if_none:'' }}">
+                    </div>
+                    <div class="col-6 col-md-4 mb-3">
+                        <label class="filter-label"><i class="fas fa-city"></i> City</label>
+                        <input type="text" name="city" class="form-control" placeholder="e.g. Mumbai"
+                               value="{{ request.GET.city|default_if_none:'' }}">
+                    </div>
+                    <div class="col-6 col-md-4 mb-3">
+                        <label class="filter-label"><i class="fas fa-building"></i> Theater</label>
+                        <input type="text" name="theater" class="form-control" placeholder="Theater name"
+                               value="{{ request.GET.theater|default_if_none:'' }}">
+                    </div>
+                    <div class="col-6 col-md-4 mb-3">
+                        <label class="filter-label"><i class="far fa-calendar-alt"></i> Release Date</label>
+                        <input type="date" name="release_date" class="form-control"
+                               value="{{ request.GET.release_date|default_if_none:'' }}">
+                    </div>
+                    <div class="col-6 col-md-4 mb-3">
+                        <label class="filter-label"><i class="far fa-calendar-check"></i> Show Date</label>
+                        <input type="date" name="show_date" class="form-control"
+                               value="{{ request.GET.show_date|default_if_none:'' }}">
+                    </div>
+                    <div class="col-6 col-md-4 mb-3">
+                        <label class="filter-label"><i class="far fa-clock"></i> Show Time</label>
+                        <select name="show_time" class="form-control">
+                            <option value="">All Show Timings</option>
+                            <option value="morning" {% if request.GET.show_time == 'morning' %}selected{% endif %}>Morning (06:00-11:59)</option>
+                            <option value="afternoon" {% if request.GET.show_time == 'afternoon' %}selected{% endif %}>Afternoon (12:00-16:59)</option>
+                            <option value="evening" {% if request.GET.show_time == 'evening' %}selected{% endif %}>Evening (17:00-20:59)</option>
+                            <option value="night" {% if request.GET.show_time == 'night' %}selected{% endif %}>Night (21:00-05:59)</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-md-4 mb-3">
+                        <label class="filter-label"><i class="fas fa-star"></i> Min Rating</label>
+                        <input type="number" step="0.1" min="0" max="10" name="rating" class="form-control"
+                               placeholder="e.g. 7.0" value="{{ request.GET.rating|default_if_none:'' }}">
+                    </div>
+                    <div class="col-6 col-md-4 mb-3">
+                        <label class="filter-label"><i class="fas fa-sort"></i> Sort By</label>
+                        <select name="sort" class="form-control">
+                            <option value="">Default</option>
+                            <option value="popularity" {% if request.GET.sort == 'popularity' %}selected{% endif %}>Popularity</option>
+                            <option value="newest" {% if request.GET.sort == 'newest' %}selected{% endif %}>Newest Releases</option>
+                            <option value="rating" {% if request.GET.sort == 'rating' %}selected{% endif %}>Rating</option>
+                            <option value="price" {% if request.GET.sort == 'price' %}selected{% endif %}>Ticket Price</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-right mt-2">
+                    <button class="btn btn-apply-filters" type="submit">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                    <a href="{% url 'movie_list' %}" class="btn btn-clear-filters">
+                        <i class="fas fa-times"></i> Clear
+                    </a>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- Result Count -->
+    <div class="text-center mb-5">
+        <span class="result-count-badge"><i class="fas fa-film mr-1"></i>{{ total_count }} Movies Found</span>
+    </div>
+
+    <!-- Recommended for You -->
+    {% if recommended_movies %}
+    <div class="mb-5">
+        <h3 class="section-heading mb-3">Recommended for You</h3>
+        <div class="row">
+            {% for movie in recommended_movies %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 premium-movie-card">
+                    <div class="poster-wrap">
+                        <img src="{{ movie.image.url }}" class="card-img-top poster-img" alt="{{ movie.name }}">
+                        <span class="rating-badge"><i class="fas fa-star"></i> {{ movie.rating }}/10</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title movie-title-clamp">{{ movie.name }}</h5>
+                        <div class="metadata-pills mb-2">
+                            {% if movie.genre %}<span class="pill">{{ movie.genre }}</span>{% endif %}
+                            {% if movie.language %}<span class="pill">{{ movie.language }}</span>{% endif %}
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                        <a href="{% url 'movie_detail' movie.id %}" class="btn btn-outline-primary btn-sm">
+                            View Details
+                        </a>
+                        <a href="{% url 'theater_list' movie.id %}" class="btn btn-primary btn-sm">
+                            View Theaters <i class="fas fa-chevron-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <h3 class="section-heading mb-3">All Movies</h3>
     <div class="row" id="movieList">
         {% for movie in movies %}
         <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <img src="{{ movie.image.url }}" class="card-img-top" alt="{{ movie.name }}" style="height: 300px; object-fit: cover;">
+            <div class="card h-100 premium-movie-card">
+                <div class="poster-wrap">
+                    <img src="{{ movie.image.url }}" class="card-img-top poster-img" alt="{{ movie.name }}">
+                    <span class="rating-badge"><i class="fas fa-star"></i> {{ movie.rating }}/10</span>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ movie.name }}</h5>
-                    <p class="card-text">
-                        <i class="fas fa-star text-warning"></i> {{ movie.rating }}
-                    </p>
-                    <p class="card-text">
+                    <h5 class="card-title movie-title-clamp">{{ movie.name }}</h5>
+                    <div class="metadata-pills mb-2">
+                        {% if movie.genre %}<span class="pill">{{ movie.genre }}</span>{% endif %}
+                        {% if movie.language %}<span class="pill">{{ movie.language }}</span>{% endif %}
+                    </div>
+                    <p class="card-text description-clamp">
                         <small class="text-muted">
                             <i class="fas fa-users"></i> Cast: {{ movie.cast }}
                         </small>
                     </p>
                 </div>
-                <div class="card-footer bg-white border-top-0">
-                    <a href="{% url 'theater_list' movie.id %}" class="btn btn-outline-primary btn-block">
-                        View Theaters <i class="fas fa-chevron-right ml-2"></i>
+                <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                    <a href="{% url 'movie_detail' movie.id %}" class="btn btn-outline-primary btn-sm">
+                        View Details
+                    </a>
+                    <a href="{% url 'theater_list' movie.id %}" class="btn btn-primary btn-sm">
+                        View Theaters <i class="fas fa-chevron-right ml-1"></i>
                     </a>
                 </div>
             </div>
@@ -55,57 +195,252 @@
         </div>
         {% endfor %}
     </div>
+
+    <!-- Pagination -->
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav aria-label="Movie pagination">
+        <ul class="pagination justify-content-center mt-4">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+            <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+                <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ num }}">{{ num }}</a>
+            </li>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled"><span class="page-link">Next</span></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
 
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
 <style>
-    .card {
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    .full-bleed {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
     }
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    .discovery-header {
+        background: linear-gradient(135deg, #14141f 0%, #1f2140 55%, #2b1f4a 100%);
+        color: #fff;
+    }
+    .discovery-header-inner {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 2.25rem 1rem;
+    }
+    .discovery-title {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    .discovery-subtitle {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 1rem;
+    }
+    .filter-panel {
+        background: linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(247,244,255,0.97) 100%);
+        border-radius: 20px;
+        border: 1px solid rgba(111, 66, 193, 0.12);
+        box-shadow: 0 16px 40px rgba(31, 21, 64, 0.14);
+        padding: 1.75rem 2rem;
+        margin-top: -1.75rem;
+        position: relative;
+        z-index: 2;
+    }
+    .search-bar-group {
+        box-shadow: 0 6px 18px rgba(111, 66, 193, 0.12);
+        border-radius: 999px;
+        overflow: hidden;
+    }
+    .search-input {
+        border: 1px solid rgba(111, 66, 193, 0.18);
+        border-right: none;
+        background: #fff;
+        font-size: 1.05rem;
+        padding: 0.85rem 1.25rem;
+    }
+    .search-input:focus {
+        box-shadow: none;
+        border-color: rgba(111, 66, 193, 0.4);
+    }
+    .btn-search {
+        background: linear-gradient(135deg, #6f42c1 0%, #e50914 130%);
+        color: #fff;
+        font-weight: 600;
+        padding: 0.85rem 1.75rem;
+        border: none;
+    }
+    .btn-search:hover {
+        color: #fff;
+        opacity: 0.92;
+    }
+    .filter-label {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #6f42c1;
+        margin-bottom: 0.35rem;
+    }
+    .filter-label i {
+        margin-right: 0.35rem;
+        width: 1rem;
+        text-align: center;
+    }
+    .filter-panel .form-control {
+        height: calc(1.5em + 0.9rem + 2px);
+        border: 1px solid rgba(111, 66, 193, 0.15);
+        background-color: #faf9ff;
+        border-radius: 10px;
+        font-size: 0.9rem;
+    }
+    .filter-panel .form-control:focus {
+        background-color: #fff;
+        border-color: #6f42c1;
+        box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.15);
+    }
+    .btn-apply-filters {
+        background: linear-gradient(135deg, #6f42c1 0%, #e50914 130%);
+        color: #fff;
+        font-weight: 700;
+        padding: 0.6rem 1.75rem;
+        border-radius: 999px;
+        border: none;
+        box-shadow: 0 8px 20px rgba(111, 66, 193, 0.3);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-apply-filters:hover {
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(111, 66, 193, 0.4);
+    }
+    .btn-clear-filters {
+        background: transparent;
+        color: #6c757d;
+        font-weight: 600;
+        padding: 0.6rem 1.25rem;
+        border-radius: 999px;
+        border: 1px solid rgba(108, 117, 125, 0.3);
+    }
+    .btn-clear-filters:hover {
+        color: #495057;
+        background: rgba(108, 117, 125, 0.08);
+    }
+    .result-count-badge {
+        display: inline-block;
+        background: #fff;
+        color: #6f42c1;
+        font-size: 0.95rem;
+        font-weight: 700;
+        padding: 0.55rem 1.5rem;
+        border-radius: 999px;
+        letter-spacing: 0.2px;
+        border: 1px solid rgba(111, 66, 193, 0.25);
+        box-shadow: 0 6px 16px rgba(111, 66, 193, 0.12);
+    }
+    .section-heading {
+        font-weight: 700;
+        border-left: 4px solid #6f42c1;
+        padding-left: 0.75rem;
+    }
+
+    .premium-movie-card {
+        border: none;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .premium-movie-card:hover {
+        transform: translateY(-6px) scale(1.015);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+    }
+    .poster-wrap {
+        position: relative;
+        width: 100%;
+        padding-top: 140%;
+        overflow: hidden;
+        background: #eee;
+    }
+    .poster-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .rating-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.75);
+        color: #ffc107;
+        font-weight: 600;
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+        border-radius: 999px;
+    }
+    .movie-title-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.6rem;
+        font-weight: 700;
+    }
+    .description-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .metadata-pills .pill {
+        display: inline-block;
+        background: #f1eefc;
+        color: #6f42c1;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        margin-right: 0.35rem;
+        margin-bottom: 0.25rem;
+    }
+    @media (max-width: 767.98px) {
+        .filter-panel {
+            margin-top: -1rem;
+            padding: 1.25rem 1.25rem;
+            border-radius: 16px;
+        }
+        .discovery-title {
+            font-size: 1.6rem;
+        }
+        .search-input {
+            font-size: 0.95rem;
+            padding: 0.7rem 1rem;
+        }
+        .btn-search {
+            padding: 0.7rem 1.1rem;
+        }
     }
 </style>
-
-<script>
-    $(document).ready(function() {
-        // Add animation to cards on hover
-        $('.card').hover(
-            function() { $(this).addClass('shadow'); },
-            function() { $(this).removeClass('shadow'); }
-        );
-
-        // Implement client-side filtering
-        $('input[name="search"]').on('input', function() {
-            var searchTerm = $(this).val().toLowerCase();
-            $('#movieList .col-md-4').each(function() {
-                var movieTitle = $(this).find('.card-title').text().toLowerCase();
-                if (movieTitle.includes(searchTerm)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            });
-        });
-    });
-</script>
-<!-- <h1>Movies</h1>
-<ul>
-    {% for movie in movies%}
-    <li>
-        <img src="{{movie.image.url}}" alt="image" >
-        <strong>{{movie.name}}</strong>{{movie.rating}}
-        <p>Cast:{{movie.cast}}</p>
-        <a href="{% url 'theater_list' movie.id %}">View Theaters</a>
-    </li>
-    {% endfor %}
-</ul> -->
 {% endblock %}

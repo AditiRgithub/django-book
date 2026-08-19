@@ -1,0 +1,26 @@
+{% extends "users/basic.html" %} {% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 mx-auto text-center">
+      <div class="card shadow">
+        <div class="card-body py-5">
+          <i class="fas fa-credit-card fa-3x text-muted mb-3"></i>
+          <h4>Payment Coming Soon</h4>
+          <p class="text-muted">
+            Payment integration (Task 4) is not implemented yet.
+            Your seats are still temporarily reserved until the countdown expires.
+          </p>
+          <p class="mb-4">
+            <strong>Seats held:</strong>
+            {% for r in reservations %}{{ r.seat.seat_number }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            for <strong>{{ theater.movie.name }}</strong> at {{ theater.name }}
+          </p>
+          <a href="{% url 'reservation_confirmation' theater.id %}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Back to Reservation
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

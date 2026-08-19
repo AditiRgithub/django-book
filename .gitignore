@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Local databases / backups
+*.sqlite3
+
+# Secrets
+.env
+.env.*
+
+# Virtual environments
+venv/
+.venv/
+
+# Celery local files
+celerybeat-schedule
+celerybeat.pid

@@ -1,0 +1,58 @@
+{% extends "users/basic.html" %}
+{% block content %}
+
+<div class="row mt-5">
+  <div class="col-lg-6 mx-auto">
+    <div class="card shadow">
+
+      {% if valid %}
+      <div class="card-header bg-success text-white text-center">
+        <h4 class="mb-0">
+          <i class="fas fa-check-circle mr-2"></i> Valid Ticket
+        </h4>
+      </div>
+
+      <div class="card-body">
+        <p class="mb-1">
+          <strong>Booking Reference:</strong> {{ ticket.booking_reference }}
+        </p>
+        <p class="mb-1">
+          <strong>Movie:</strong> {{ ticket.snapshot_movie_name }}
+        </p>
+        <p class="mb-1">
+          <strong>Theater:</strong> {{ ticket.snapshot_theater_name }}
+        </p>
+        <p class="mb-1">
+          <strong>Screen:</strong> {{ ticket.snapshot_screen }}
+        </p>
+        <p class="mb-1">
+          <strong>Show Time:</strong>
+          {{ ticket.snapshot_show_time|date:"d M Y, h:i A" }}
+        </p>
+        <p class="mb-0">
+          <strong>Seats:</strong>
+          {% for seat_number in ticket.snapshot_seat_numbers %}
+            {{ seat_number }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+      </div>
+
+      {% else %}
+
+      <div class="card-header bg-danger text-white text-center">
+        <h4 class="mb-0">
+          <i class="fas fa-times-circle mr-2"></i> Invalid Ticket
+        </h4>
+      </div>
+
+      <div class="card-body text-center">
+        <p class="mb-0">This ticket could not be verified.</p>
+      </div>
+
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -32,6 +32,10 @@
         </div>
       </div>
 
+      {% if error %}
+      <div class="alert alert-danger" role="alert">{{ error }}</div>
+      {% endif %}
+
       <!-- Seat Selection -->
       <div class="card">
         <div class="card-body">
@@ -42,47 +46,62 @@
             {% csrf_token %}
             <div class="d-flex justify-content-center flex-wrap mb-4">
               {% for seat in seats %}
-              <div class="seat {% if seat.is_booked %}sold{% endif %}">
-                {% if not seat.is_booked %}
-                <input
-                  type="checkbox"
-                  name="seats"
-                  value="{{ seat.id }}"
-                  class="d-none"
-                  id="seat-{{ seat.id }}"
-                />
-                <label
-                  for="seat-{{ seat.id }}"
-                  class="w-100 h-100 d-flex align-items-center justify-content-center"
-                  >{{ seat.seat_number }}</label
-                >
-                {% else %} {{ seat.seat_number }} {% endif %}
+              <div class="seat
+                {% if seat.is_booked %}booked
+                {% elif seat.active_reservation and seat.active_reservation.user_id != request.user.id %}reserved
+                {% endif %}">
+                {% if seat.is_booked %}
+                  {{ seat.seat_number }}
+                {% elif seat.active_reservation and seat.active_reservation.user_id != request.user.id %}
+                  {{ seat.seat_number }}
+                {% else %}
+                  <input
+                    type="checkbox"
+                    name="seats"
+                    value="{{ seat.id }}"
+                    class="d-none"
+                    id="seat-{{ seat.id }}"
+                    {% if seat.active_reservation and seat.active_reservation.user_id == request.user.id %}checked{% endif %}
+                  />
+                  <label
+                    for="seat-{{ seat.id }}"
+                    class="w-100 h-100 d-flex align-items-center justify-content-center"
+                    >{{ seat.seat_number }}</label
+                  >
+                {% endif %}
               </div>
               {% endfor %}
             </div>
 
             <!-- Seat Legend -->
-            <div class="d-flex justify-content-center mb-4">
-              <div class="d-flex align-items-center me-4">
+            <div class="d-flex justify-content-center flex-wrap mb-4">
+              <div class="d-flex align-items-center me-4 mb-2">
                 <div class="seat" style="background-color: white"></div>
-                <span class="ms-2">Available</span>
+                <span class="ms-2">🟢 Available</span>
               </div>
-              <div class="d-flex align-items-center me-4">
+              <div class="d-flex align-items-center me-4 mb-2">
                 <div class="seat selected"></div>
                 <span class="ms-2">Selected</span>
               </div>
-              <div class="d-flex align-items-center">
-                <div class="seat sold"></div>
-                <span class="ms-2">Sold</span>
+              <div class="d-flex align-items-center me-4 mb-2">
+                <div class="seat reserved"></div>
+                <span class="ms-2">🟡 Temporarily Reserved</span>
+              </div>
+              <div class="d-flex align-items-center mb-2">
+                <div class="seat booked"></div>
+                <span class="ms-2">🔴 Booked</span>
               </div>
             </div>
 
             <!-- Book Button -->
             <div class="text-center">
               <button type="submit" class="btn btn-success btn-lg">
-                Book Selected Seats
+                Reserve Selected Seats
               </button>
             </div>
+            <p class="text-center text-muted mt-2" style="font-size: 0.9rem;">
+              Reserving seats holds them for you for 2 minutes while you proceed to payment.
+            </p>
           </form>
         </div>
       </div>
@@ -112,9 +131,32 @@
     background-color: #28a745;
     color: white;
   }
-  .seat.sold {
-    background-color: #ccc;
+  .seat.booked {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
     cursor: not-allowed;
+  }
+  .seat.booked:hover {
+    background-color: #dc3545;
+    color: white;
+  }
+  .seat.reserved {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #333;
+    cursor: not-allowed;
+  }
+  .seat.reserved:hover {
+    background-color: #ffc107;
+    color: #333;
+  }
+  /* Highlight the label when its checkbox is checked, so the user's current
+     selection is visually obvious (green = selected), without needing extra JS. */
+  .seat input:checked + label {
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
   }
   .screen {
     margin: 20px 0;
@@ -145,26 +187,4 @@
     margin: 0 10px;
   }
 </style>
-<!-- <h1>Seats for {{theater.name}} - {{theater.movie.name}}</h1>
-{% if error %}
-<p style="color:red;">{{error}}</p>
-{% endif %}
-<form method="POST">
-    {% csrf_token %}
-    <ul>
-        {% for seat in seats %}
-        <li>
-          Seats{{seat.seat_number}}:
-          {% if seat.is_booked %}
-          <strong>Booked seat {{seat.seat_number}}</strong>
-          {% else %}
-          <input type="checkbox" name="seats" value="{{seat.id}}">
-          <strong>Available seat {{seat.seat_number}}</strong>
-          {% endif%}
-        </li>
-        {% endfor %}
-      </ul>
-      <button type="submit">Book selected seats</button>
-</form> -->
-
 {% endblock %}

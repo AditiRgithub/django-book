@@ -1,0 +1,260 @@
+{% extends "users/basic.html" %}
+{% block content %}
+
+<div class="container py-5">
+  <h1 class="mb-4">Admin Dashboard</h1>
+
+  {% if date_error %}
+  <div class="alert alert-warning">{{ date_error }}</div>
+  {% endif %}
+
+  <!-- Date range filter -->
+  <form method="GET" class="form-row align-items-end mb-4">
+    <div class="col-auto mb-2">
+      <label class="form-label small text-muted mb-0">Start Date</label>
+      <input type="date" name="start_date" class="form-control" value="{{ start_date|date:'Y-m-d' }}">
+    </div>
+    <div class="col-auto mb-2">
+      <label class="form-label small text-muted mb-0">End Date</label>
+      <input type="date" name="end_date" class="form-control" value="{{ end_date|date:'Y-m-d' }}">
+    </div>
+    <div class="col-auto mb-2">
+      <button type="submit" class="btn btn-primary">Apply</button>
+      <a href="{% url 'admin_dashboard' %}" class="btn btn-outline-secondary">Clear</a>
+      <a href="{% url 'export_dashboard_csv' %}?start_date={{ start_date|date:'Y-m-d' }}&end_date={{ end_date|date:'Y-m-d' }}"
+         class="btn btn-outline-success">
+        <i class="fas fa-file-csv mr-1"></i> Export CSV
+      </a>
+    </div>
+  </form>
+
+  <!-- Fixed-calendar-period revenue cards (independent of the custom filter) -->
+  <div class="row mb-4">
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <p class="text-muted mb-1">Today's Revenue</p>
+          <h4 class="mb-0">&#8377;{{ summary_cards.today_gross }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <p class="text-muted mb-1">This Week</p>
+          <h4 class="mb-0">&#8377;{{ summary_cards.week_gross }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <p class="text-muted mb-1">This Month</p>
+          <h4 class="mb-0">&#8377;{{ summary_cards.month_gross }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <p class="text-muted mb-1">This Year</p>
+          <h4 class="mb-0">&#8377;{{ summary_cards.year_gross }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Selected-range summary -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-dark text-white">
+      Selected Range Summary ({{ start_date }} to {{ end_date }})
+    </div>
+    <div class="card-body">
+      <div class="row text-center">
+        <div class="col-md-2">
+          <p class="text-muted mb-1 small">Gross Revenue</p>
+          <h5>&#8377;{{ selected_summary.gross_revenue }}</h5>
+        </div>
+        <div class="col-md-2">
+          <p class="text-muted mb-1 small">Net Revenue</p>
+          <h5>&#8377;{{ selected_summary.net_revenue }}</h5>
+        </div>
+        <div class="col-md-2">
+          <p class="text-muted mb-1 small">Confirmed Bookings</p>
+          <h5>{{ selected_summary.confirmed_bookings }}</h5>
+        </div>
+        <div class="col-md-3">
+          <p class="text-muted mb-1 small">Cancellations</p>
+          <h5>{{ selected_summary.cancellations }}</h5>
+        </div>
+        <div class="col-md-3">
+          <p class="text-muted mb-1 small">Total Refunded</p>
+          <h5>&#8377;{{ selected_summary.total_refunded }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Revenue trend -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">Revenue Trend</div>
+        <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Date</th><th>Gross Revenue</th></tr></thead>
+            <tbody>
+              {% for row in revenue_trend %}
+              <tr><td>{{ row.day }}</td><td>&#8377;{{ row.gross }}</td></tr>
+              {% empty %}
+              <tr><td colspan="2" class="text-muted">No revenue in this range.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking trend -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">Booking Trend</div>
+        <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Date</th><th>Confirmed Bookings</th></tr></thead>
+            <tbody>
+              {% for row in booking_trend %}
+              <tr><td>{{ row.day }}</td><td>{{ row.count }}</td></tr>
+              {% empty %}
+              <tr><td colspan="2" class="text-muted">No bookings in this range.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Occupancy -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">Occupancy Per Theater/Show</div>
+        <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Theater</th><th>Movie</th><th>Booked</th><th>Total Seats</th><th>Occupancy</th></tr></thead>
+            <tbody>
+              {% for row in occupancy %}
+              <tr>
+                <td>{{ row.theater.name }}</td>
+                <td>{{ row.theater.movie.name }}</td>
+                <td>{{ row.confirmed_bookings }}</td>
+                <td>{{ row.total_seats }}</td>
+                <td>{{ row.occupancy_percent }}%</td>
+              </tr>
+              {% empty %}
+              <tr><td colspan="5" class="text-muted">No data.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Most booked movies -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">Most Booked Movies</div>
+        <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Movie</th><th>Bookings</th></tr></thead>
+            <tbody>
+              {% for row in most_booked_movies %}
+              <tr><td>{{ row.name }}</td><td>{{ row.booking_count }}</td></tr>
+              {% empty %}
+              <tr><td colspan="2" class="text-muted">No data.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top-performing theaters -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">Top-Performing Theaters</div>
+        <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Theater</th><th>Movie</th><th>Bookings</th><th>Gross</th><th>Net</th></tr></thead>
+            <tbody>
+              {% for row in top_theaters %}
+              <tr>
+                <td>{{ row.theater.name }}</td>
+                <td>{{ row.theater.movie.name }}</td>
+                <td>{{ row.booking_count }}</td>
+                <td>&#8377;{{ row.gross_revenue }}</td>
+                <td>&#8377;{{ row.net_revenue }}</td>
+              </tr>
+              {% empty %}
+              <tr><td colspan="5" class="text-muted">No data.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Peak booking hours -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">Peak Booking Hours</div>
+        <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Hour (24h)</th><th>Bookings</th></tr></thead>
+            <tbody>
+              {% for row in peak_hours %}
+              <tr><td>{{ row.hour }}:00</td><td>{{ row.count }}</td></tr>
+              {% empty %}
+              <tr><td colspan="2" class="text-muted">No data.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cancellation / refund stats -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">Cancellation / Refund Statistics</div>
+        <div class="card-body">
+          <p class="mb-1"><strong>Cancelled Payments:</strong> {{ cancellation_refund_stats.cancelled_count }}</p>
+          <p class="mb-1"><strong>Refunds Pending:</strong> {{ cancellation_refund_stats.refund_pending_count }}</p>
+          <p class="mb-1"><strong>Refunds Completed:</strong> {{ cancellation_refund_stats.refund_completed_count }}</p>
+          <p class="mb-1"><strong>Refunds Partial:</strong> {{ cancellation_refund_stats.refund_partial_count }}</p>
+          <p class="mb-0"><strong>Total Refunded:</strong> &#8377;{{ cancellation_refund_stats.total_refunded_amount }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- User growth -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">User Growth</div>
+        <div class="card-body" style="max-height: 300px; overflow-y: auto;">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Month</th><th>New Users</th></tr></thead>
+            <tbody>
+              {% for row in user_growth %}
+              <tr><td>{{ row.month|date:"F Y" }}</td><td>{{ row.new_users }}</td></tr>
+              {% empty %}
+              <tr><td colspan="2" class="text-muted">No new users in this range.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

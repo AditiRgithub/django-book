@@ -149,12 +149,15 @@
         <div class="theatre-info">
           <div>
             <strong>{{ theater.name }} Theater</strong>
+            {% if theater.city %}
+            <span class="text-muted ml-2"><i class="fas fa-map-marker-alt"></i> {{ theater.city }}</span>
+            {% endif %}
             <div class="info-icons mt-2">
               <i class="fas fa-mobile-alt text-success"></i> M-Ticket
-              <i class="fas fa-utensils text-warning ms-3"></i> Food & Beverage
-              <i class="fas fa-parking text-primary ms-3"></i> Parking Available
-              <i class="fas fa-wheelchair text-info ms-3"></i> Wheelchair Access
-              <i class="fas fa-glasses text-danger ms-3"></i> 3D Show Available
+              <i class="fas fa-utensils text-warning ml-3"></i> Food & Beverage
+              <i class="fas fa-parking text-primary ml-3"></i> Parking Available
+              <i class="fas fa-wheelchair text-info ml-3"></i> Wheelchair Access
+              <i class="fas fa-glasses text-danger ml-3"></i> 3D Show Available
             </div>
           </div>
         </div>
@@ -162,6 +165,9 @@
         <div class="show-times">
           <div class="time-box">
             {{ theater.time }}
+            {% if theater.ticket_price %}
+            <span>&#8377;{{ theater.ticket_price }}</span>
+            {% endif %}
             <a href="{% url 'book_seats' theater.id %}">
               <span>Book Now</span>
             </a>
